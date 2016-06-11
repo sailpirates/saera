@@ -29,38 +29,47 @@ import subprocess
 
 from guessing import Guesser
 
-if sys.version_info[0]<3:
-	if sys.version_info[1]<7:
-		try:
-			import fremantle_hw as platform
-		except ImportError:
-			try:
-				import harmattan_hw as platform
-			except ImportError:
-				import cmd_hw as platform
-	else:
-		if pfm.linux_distribution()[0].lower()=='ubuntu':
-			import ubuntu_hw as platform
-		elif sys.platform == 'darwin':
-			import osx_hw as platform
-		else:
-			import cmd_hw as platform
-else:
-	#import harmattan_hw as platform
-	# import x86_hw as platform
-	try:
-		import sailfish_hw as platform
-	except ImportError:
-		if pfm.linux_distribution()[0].lower()=='ubuntu':
-			import ubuntu_hw as platform
-		else:
-			import cmd_hw as platform
+import desktop_hw as platform
+
+# if sys.version_info[0]<3:
+# 	if sys.version_info[1] < 7:
+# 		try:
+# 			import fremantle_hw as platform
+# 		except ImportError:
+# 			try:
+# 				import harmattan_hw as platform
+# 			except ImportError:
+# 				import cmd_hw as platform
+# 	elif sys.version_info[1] == 8:
+# 		try:
+# 			import desktop_hw as platform
+# 		except ImportError:
+# 			raise Exception("Found no hw!")
+# 	else:
+# 		if pfm.linux_distribution()[0].lower()=='ubuntu':
+# 			import ubuntu_hw as platform
+# 		elif sys.platform == 'darwin':
+# 			import osx_hw as platform
+# 		else:
+# 			import cmd_hw as platform
+# else:
+# 	#import harmattan_hw as platform
+# 	# import x86_hw as platform
+# 	try:
+# 		import sailfish_hw as platform
+# 	except ImportError:
+# 		if pfm.linux_distribution()[0].lower()=='ubuntu':
+# 			import ubuntu_hw as platform
+# 		else:
+# 			import cmd_hw as platform
 
 # if not os.path.exists(platform.memory_path):
 
 # 	data = {'username':None}
 
 log_level = logging.INFO
+
+print(platform.__name__)
 
 config = platform.config
 

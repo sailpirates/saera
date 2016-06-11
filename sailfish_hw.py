@@ -587,8 +587,6 @@ def cancel_listening():
 	subprocess.Popen(['pactl', 'set-sink-volume', '1', str(volume)])
 
 class timed:
-	alarms = []
-
 	def check():
 		if os.path.exists(os.getenv('HOME')+'/.config/saera/alarms'):
 			alarm_list = open(os.getenv('HOME')+'/.config/saera/alarms').read().splitlines()
